@@ -9,7 +9,7 @@ def angle_between_3d(v, w):
 
     # Handle zero vectors
     if v_norm == 0 or w_norm == 0:
-        return np.nan   # or np.nan depending on problem requirement
+        return np.nan   
 
     cos_theta = np.dot(v, w) / (v_norm * w_norm)
 
