@@ -14,5 +14,4 @@ def cosine_similarity(a, b):
     if(a_norm == 0 or b_norm == 0):
         return 0
 
-    similarity = np.dot(a, b)/(a_norm * b_norm)
-    return similarity
+    return np.dot(a, b)/(a_norm * b_norm)
