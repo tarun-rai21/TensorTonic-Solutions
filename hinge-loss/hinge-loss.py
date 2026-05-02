@@ -9,10 +9,15 @@ def hinge_loss(y_true, y_score, margin=1.0, reduction="mean") -> float:
     """
     y_true = np.asarray(y_true, dtype = float)
     y_score = np.asarray(y_score, dtype = float)
+    
+    loss = np.maximum(0, margin - y_score*y_true)
 
-    loss = np.maximum(0, margin - y_true * y_score)
-
-    if (reduction=="mean"):
+    if(reduction == "mean"):
         return np.mean(loss)
-    else:
+    
+    elif(reduction == "sum"):
         return np.sum(loss)
+    
+    else: 
+        raise ValueError("reduction must be 'mean' or 'sum'")
+    
