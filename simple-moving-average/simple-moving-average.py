@@ -1,17 +1,25 @@
 import numpy as np
+
 def simple_moving_average(values, window_size):
     """
     Compute the simple moving average of the given values.
     """
-    values = np.asarray(values, dtype = float)
-    result = []
+    values = np.asarray(values, dtype=float)
 
     n = len(values)
-    for i in range(0, n-window_size+1):
-        sum = 0
-        for j in range(0, window_size):
-            sum += values[i+j]
-        avg = sum/window_size
-        result.append(avg)
+
+    if window_size > n or window_size <= 0:
+        return []
+
+    result = []
+
+    # First window sum
+    window_sum = np.sum(values[:window_size])
+    result.append(window_sum / window_size)
+
+    # Sliding the window
+    for i in range(window_size, n):
+        window_sum += values[i] - values[i - window_size]
+        result.append(window_sum / window_size)
 
     return result
