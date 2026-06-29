@@ -1,4 +1,3 @@
-import numpy as np
 def color_to_grayscale(image):
     """
     Convert an RGB image to grayscale using luminance weights.
@@ -7,7 +6,13 @@ def color_to_grayscale(image):
     for i in range(0, len(image)):
         row_i = []
         for j in range(0, len(image[0])):
-            y = 0.299*image[i][j][0] + 0.587*image[i][j][1] + 0.114*image[i][j][2]
+            pixel = image[i][j]
+
+            R = pixel[0]
+            G = pixel[1]
+            B = pixel[2]
+            
+            y = 0.299*R + 0.587*G + 0.114*B
             row_i.append(y)
         result.append(row_i)
 
